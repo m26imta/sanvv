@@ -19,5 +19,7 @@ nnoremap <silent> L :bn<cr>
 nnoremap <silent> H :bp<cr>
 ]])
 
+require("utils")
 require("core")
+require("lazy_bootstrap")
 
