@@ -17,7 +17,7 @@ nnoremap <silent> <leader>e <cmd>e ./<cr>
 nnoremap <silent> <leader>x <cmd>bdelete!<cr>
 nnoremap <silent> L :bn<cr>
 nnoremap <silent> H :bp<cr>
-nnoremap <silent> <tab> :bn<cr>
-nnoremap <silent> <S-tab> :bp<cr>
 ]])
+
+require("core")
 
