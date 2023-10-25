@@ -4,6 +4,41 @@ local config = function()
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")
 
+  local kindicon = {
+    lspkind_default = lspkind.presets.default,
+    lspkind_codicons = lspkind.presets.codicons,
+    kind_custom = {
+      Text = "",
+      Method = "",
+      Function = "",
+      Constructor = "",
+      Field = "ﰠ",
+      Variable = "",
+      Class = "ﴯ",
+      Interface = "",
+      Module = "",
+      Property = "ﰠ",
+      Unit = "",
+      Value = "",
+      Enum = "",
+      Keyword = "",
+      Snippet = "",
+      Color = "",
+      File = "",
+      Reference = "",
+      Folder = "",
+      EnumMember = "",
+      Constant = "",
+      Struct = "פּ",
+      Event = "",
+      Operator = "",
+      TypeParameter = "",
+    },
+  }
+
+  -- set icon for cmp kind
+  local icon = kindicon.lspkind_default
+
   -- --- friendly-snippets
   -- https://github.com/rafamadriz/friendly-snippets#with-lazynvim
   require("luasnip.loaders.from_vscode").lazy_load()
@@ -51,7 +86,7 @@ local config = function()
         local shorten_abbr = string.sub(vim_item.abbr, 1, 30)
         if shorten_abbr ~= vim_item.abbr then vim_item.abbr = shorten_abbr .. "..." end
         -- Kind icons  |  Text -->  Text
-        vim_item.kind = string.format("%s %s", lspkind.presets.codicons[vim_item.kind], vim_item.kind)
+        vim_item.kind = string.format("%s %s", icon[vim_item.kind], vim_item.kind)
         -- Source
         vim_item.menu = ({
           nvim_lsp = "     LSP",
