@@ -5,7 +5,7 @@ local config = function()
 
   local options = {
     window = {
-      width = 20,
+      width = 25,
       mappings = {
         ['h'] = "close_node",
         ['l'] = "open",
@@ -21,8 +21,7 @@ return{
   branch = "v3.x",
   lazy = true,
   cmd = "Neotree",
-  keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-  },
+  keys = require("core.keymaps").plugins_keymaps["neotree"],
   config = config,
-} 
+}
+

@@ -1,4 +1,4 @@
-local theme = "nightfly"
+local theme = "gruvbox"
 -- "nightfox/carbonfox"  OR  "nightfox"
 
 local preinstall = false    -- true: install all themes / false: install only 1 theme

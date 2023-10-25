@@ -31,9 +31,20 @@ local config = function()
 end
 
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
-  config = config,
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = { "BufEnter", "BufReadPost", "BufNewFile" },
+    config = config,
+    dependencies = {
+      {"windwp/nvim-ts-autotag" },
+      {"windwp/nvim-autopairs", opts = {} },
+      {
+        "numToStr/Comment.nvim",
+        opts = {},
+        lazy = false,
+      }
+    },
+  },
 }
 

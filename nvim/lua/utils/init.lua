@@ -1,4 +1,8 @@
-function split_string(str, sep)
+local M = {}
+
+
+
+function M:split_string(str, sep)
     local result = {}
     for token in string.gmatch(str, "[^" .. sep .. "]+") do
         table.insert(result, token)
@@ -7,7 +11,7 @@ function split_string(str, sep)
 end
 
 
-function split(string, delimiter)
+function M:split(string, delimiter)
   -- Create a table to store the split strings.
   local table = {}
 
@@ -22,12 +26,12 @@ function split(string, delimiter)
 end
 
 
-function Dump(o)
+function M:Dump(o)
    if type(o) == 'table' then
       local s = '{ '
       for k,v in pairs(o) do
          if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. Dump(v) .. ','
+         s = s .. '['..k..'] = ' .. M:Dump(v) .. ','
       end
       return s .. '} '
    else
@@ -37,13 +41,13 @@ end
 
 -- Print contents of `tbl`, with indentation.
 -- `indent` sets the initial level of indentation.
-function Tprint (tbl, indent)
+function M:Tprint (tbl, indent)
   if not indent then indent = 0 end
   for k, v in pairs(tbl) do
     local formatting = string.rep("  ", indent) .. k .. ": "
     if type(v) == "table" then
       print(formatting)
-      Tprint(v, indent+1)
+      M:Tprint(v, indent+2)
     elseif type(v) == 'boolean' then
       print(formatting .. tostring(v))
     else
@@ -52,7 +56,27 @@ function Tprint (tbl, indent)
   end
 end
 
-function Table_contains(tbl, x)
+function M:Tprint1 (tbl, indent)
+  if not indent then indent = 0 end
+  local formatting = ""
+  for k, v in pairs(tbl) do
+    formatting = string.rep("  ", indent) .. tostring(k) .. ": "
+    if type(v) == "table" then
+      formatting = formatting .. "\r\n"
+      formatting = formatting .. M:Tprint1(v, indent+2)
+    elseif type(v) == 'boolean' then
+      formatting = formatting .. tostring(v)
+    elseif v == nil then
+      formatting = formatting .. "nil"
+    else
+      formatting = formatting .. v
+    end
+  end
+  return formatting
+end
+
+
+function M:Table_contains(tbl, x)
     local found = false
     for _, v in pairs(tbl) do
         if v == x then
@@ -62,3 +86,17 @@ function Table_contains(tbl, x)
     return found
 end
 
+
+function M:Tbl_print(tbl)
+  local M = {}
+  local indent = "  "
+  for k,v in pairs(tbl) do
+    if type(v)=="table" then
+      M:Tbl_print(v)
+    end
+  end
+end
+
+
+
+return M

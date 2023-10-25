@@ -37,6 +37,7 @@ vim.opt.showmode = false  -- no [INSERT] or [VISUAL] anymore
 vim.opt.timeoutlen = 350
 vim.opt.mouse = "a"
 vim.opt.clipboard:append("unnamedplus")
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.wrap = false
