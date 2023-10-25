@@ -4,6 +4,10 @@ local config = function()
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")
 
+  -- --- friendly-snippets
+  -- https://github.com/rafamadriz/friendly-snippets#with-lazynvim
+  require("luasnip.loaders.from_vscode").lazy_load()
+
   local kindicon = {
     lspkind_default = lspkind.presets.default,
     lspkind_codicons = lspkind.presets.codicons,
@@ -35,43 +39,8 @@ local config = function()
       TypeParameter = "",
     },
   }
-
   -- set icon for cmp kind
   local icon = kindicon.lspkind_default
-
-  -- --- friendly-snippets
-  -- https://github.com/rafamadriz/friendly-snippets#with-lazynvim
-  require("luasnip.loaders.from_vscode").lazy_load()
-
-  -- mapping
-  local mapping = cmp.mapping.preset.insert({
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-    ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
-    -- C-b (back) C-f (forward) for snippet placeholder navigation.
-    ['<C-Space>'] = cmp.mapping.complete(),
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
-    ['<CR>'] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false, },
-    -- ['.'] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true, },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  })
 
   -- formatting
   local formatting = {
@@ -105,6 +74,36 @@ local config = function()
       end
     })
   }
+
+  -- mapping
+  local mapping = cmp.mapping.preset.insert({
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
+    ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+    -- C-b (back) C-f (forward) for snippet placeholder navigation.
+    ['<C-Space>'] = cmp.mapping.complete(),
+    -- Accept currently selected item. If none selected, `select` first item.
+    -- Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false, },
+    -- ['.'] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true, },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  })
 
   -- cmp setup
   cmp.setup {
@@ -142,7 +141,6 @@ local config = function()
     formatting = formatting,
   }
 
-
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
@@ -171,7 +169,6 @@ local config = function()
   })
 
 end
-
 
 
 return {
