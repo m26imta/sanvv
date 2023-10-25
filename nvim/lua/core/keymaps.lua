@@ -69,10 +69,14 @@ vim.cmd([[vnoremap <C-r><C-e> "hy:%s/<C-r>h//gc<left><left><left>]])
 -- Select entire line in VIM, without the new line character
 -- https://stackoverflow.com/a/61624228
 vim.cmd([[
-vnoremap il :<C-U>normal mtg_v`t<CR>
+vnoremap LL :<C-U>normal mtg_v`t<CR>
+omap LL :normal vLL<CR>
+vnoremap HH :<C-U>normal mt^v`t<CR>
+omap HH :normal vHH<CR>
+vnoremap al :<C-U>normal 0v$h<CR>
+omap al :normal val<CR>
+vnoremap il :<C-U>normal ^vg_<CR>
 omap il :normal vil<CR>
-vnoremap ih :<C-U>normal mt^v`t<CR>
-omap ih :normal vih<CR>
 ]])
 
 M = {}
