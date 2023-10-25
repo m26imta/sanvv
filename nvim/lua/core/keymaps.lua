@@ -57,6 +57,7 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 keymap("n", "<", "v<<ESC>")
 keymap("n", ">", "v><ESC>")
+keymap("n", "<ESC>", ":nohl<CR>", opts)
 -- move lines
 keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
 keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
