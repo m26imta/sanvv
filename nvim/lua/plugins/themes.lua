@@ -35,7 +35,7 @@ theme_varient = M[2]
 local function set_theme()
   for _, v in pairs(builtin_themes) do
     if v == theme_name then
-      vim.cmd("varients " .. theme_name)
+      vim.cmd("color " .. theme_name)
       return {}
     end
   end
