@@ -61,4 +61,6 @@ return {
     { 'creativenull/efmls-configs-nvim' },
   },
   config = config,
+  enabled = false,
 }
+
