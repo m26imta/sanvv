@@ -60,5 +60,6 @@ return {
   dependencies = {
     { 'creativenull/efmls-configs-nvim' },
   },
+  enabled = false,
   config = config,
 }
