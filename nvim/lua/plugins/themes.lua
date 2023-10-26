@@ -1,4 +1,4 @@
-local theme = "gruvbox"
+local theme = "nightfox/carbonfox"
 -- "nightfox/carbonfox"  OR  "nightfox"
 
 local preinstall = false    -- true: install all themes / false: install only 1 theme
@@ -25,12 +25,12 @@ local themes = {
   { "projekt0n/github-nvim-theme",    name = "github-theme",  varients = { "github_dark", "github_dark_colorblind", "github_dark_default", "github_dark_dimmed", "github_dark_high_contrast", "github_dark_tritanopia", "github_dimmed", "github_light", "github_light_colorblind", "github_light_default", "github_light_high_contrast", "github_light_tritanopia" } },
 }
 
-local M = {}
+local t = {}
 for m in theme.gmatch(theme, "[^/]+") do
-  table.insert(M, m)
+  table.insert(t, m)
 end
-theme_name = M[1]
-theme_varient = M[2]
+local theme_name = t[1]
+local theme_varient = t[2]
 
 local function set_theme()
   for _, v in pairs(builtin_themes) do
