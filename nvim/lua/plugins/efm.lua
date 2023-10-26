@@ -26,7 +26,7 @@ local config = function()
     },
   })
 
-  python
+  -- python
   local black = require("efmls-configs.formatters.black")
   local flake8 = require("efmls-configs.linters.flake8")
   opts = vim.tbl_deep_extend("force", opts, {
