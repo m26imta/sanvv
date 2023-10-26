@@ -26,17 +26,17 @@ local config = function()
     },
   })
 
-  -- python
-  -- local black = require("efmls-configs.formatters.black")
-  -- local flake8 = require("efmls-configs.linters.flake8")
-  -- opts = vim.tbl_deep_extend("force", opts, {
-  --   filetypes = { "python" },
-  --   settings = {
-  --     languages = {
-  --       python = { black, flake8 }
-  --     }
-  --   }
-  -- })
+  python
+  local black = require("efmls-configs.formatters.black")
+  local flake8 = require("efmls-configs.linters.flake8")
+  opts = vim.tbl_deep_extend("force", opts, {
+    filetypes = { "python" },
+    settings = {
+      languages = {
+        python = { black, flake8 }
+      }
+    }
+  })
 
   -- call efm setup
   require("lspconfig").efm.setup({ opts })
@@ -60,5 +60,6 @@ return {
   dependencies = {
     { 'creativenull/efmls-configs-nvim' },
   },
+  enabled = false,
   config = config,
 }
