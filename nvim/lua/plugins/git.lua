@@ -63,13 +63,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    event = "VeryLazy",
-    config = function()
-      vim.cmd([[
-      " setup mapping to call :LazyGit
-      nnoremap <silent> <leader>gg :LazyGit<CR>
-      ]])
-    end
+    keys = require("core.keymaps").plugins_keymaps["lazygit"],
   },
 }
 
