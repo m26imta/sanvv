@@ -50,10 +50,26 @@ local gitsigns_config = function()
 end
 
 return {
-  { "tpope/vim-fugitive" },
+  { "tpope/vim-fugitive",
+    event = "VeryLazy",
+  },
   { "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     config = gitsigns_config,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      vim.cmd([[
+      " setup mapping to call :LazyGit
+      nnoremap <silent> <leader>gg :LazyGit<CR>
+      ]])
+    end
   },
 }
 
