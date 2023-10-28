@@ -73,11 +73,6 @@ return{
         cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
       },
       { 'williamboman/mason-lspconfig.nvim' },
-      { 'mattn/efm-langserver',
-        dependencies = {
-          { 'creativenull/efmls-configs-nvim' },
-        }
-      },
     },
     event = { "BufReadPost", "BufNewFile", "BufEnter" },
     config = config,
