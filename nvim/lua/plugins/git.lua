@@ -62,7 +62,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    keys = require("core.keymaps").plugins_keymaps["lazygit"],
+    keys = require("core.keymaps").plugins_keymaps.lazygit,
   },
 }
 
