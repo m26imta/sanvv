@@ -62,5 +62,6 @@ return {
   },
   enabled = false,
   config = config,
+  enabled = false,
 }
 
