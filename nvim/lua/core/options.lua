@@ -4,16 +4,15 @@ local tabsize = 4
 vim.opt.tabstop = tabsize
 vim.opt.shiftwidth = tabsize
 vim.opt.softtabstop = tabsize
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-
-vim.opt.smarttab = true
-vim.opt.autoindent = true
+vim.opt.autoindent = true  -- keep indent when starting new line <CR>
+vim.opt.smartindent = true -- indent after code-block opener `{` followed by an <CR>
+vim.opt.expandtab = true   -- Use spaces instead of tabs
+vim.opt.smarttab = true    -- When ON, a <Tab> in front of a line inserts blanks according to `shiftwidth` instead of `tabstop/softtabstop`
 
 -- search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.incsearch = true
+vim.opt.ignorecase = true  -- Ignore case when searching
+vim.opt.smartcase = true   -- When searching try to be smart about cases
+vim.opt.incsearch = true   -- Makes search act like search in modern browsers
 vim.opt.hlsearch = true
 vim.opt.showmatch = true
 
@@ -31,7 +30,10 @@ vim.opt.cmdheight = 1
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 vim.opt.ruler = true
-vim.opt.showmode = false  -- no [INSERT] or [VISUAL] anymore
+vim.cmd([[
+set showmode  " noshowmode: no [INSERT] or [VISUAL] anymore
+set statusline=\ %{&paste==1?'[PASTE\ MODE]\ \ ':''}\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c  " Format the status line
+]])
 
 -- -----
 vim.opt.timeoutlen = 350
@@ -60,6 +62,7 @@ vim.opt.listchars = {
   -- eol = '↲',
   eol = '↴',
 }
+
 
 -- Neovide
 if vim.g.neovide then

@@ -11,8 +11,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 
-keymap("i", "jk", "<ESC>", opts)
 vim.cmd("nnoremap ; :")
+keymap("i", "jk", "<ESC>", opts)
 
 -- move around text
 keymap({"i", "c", "t"}, "<C-h>", "<LEFT>", { noremap = true })
@@ -41,7 +41,11 @@ keymap("n", "<C-q><C-x>", "<cmd>q!<CR>", opts)
 keymap("n", "<leader>x", "<cmd>bd!<CR>", opts)
 vim.cmd([[
 if has("unix")
+  echo "set write as sudo keymaps"
   cnoremap w!! execute 'silent! write !SUDO_ASKPASS=`which ssh-askpass` sudo tee % >/dev/null' <bar> edit!
+  command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+  command! WW execute 'w !sudo -S (inputsecret("sudo passwd: ")) tee > /dev/null %' <bar> edit!
+
 endif
 ]])
 
@@ -59,8 +63,15 @@ keymap("n", "<", "v<<ESC>")
 keymap("n", ">", "v><ESC>")
 keymap("n", "<ESC>", ":nohl<CR>", opts)
 -- move lines
-keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
-keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
+-- keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
+-- keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
+vim.cmd([[
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+]])
 -- search text with C-f
 keymap("v", "<c-f>", 'y<ESC>/<c-r>"<CR>', opts)
 -- Vim search and replace selected text
@@ -120,9 +131,9 @@ M.lsp_set_keymaps = function(_, bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', '<c-space><c-k>', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', '<c-space><c-k>', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+  -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
