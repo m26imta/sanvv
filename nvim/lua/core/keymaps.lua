@@ -98,6 +98,9 @@ M.plugins_keymaps = {
       desc = "Telescope: Search string"
     },
   },
+  lazygit = {
+    { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Open LazyGit", mode = {"n"}, noremap = true, silent = true },
+  },
 }
 
 M.lsp_set_keymaps = function(_, bufnr)
