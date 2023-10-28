@@ -21,7 +21,7 @@ return{
   branch = "v3.x",
   lazy = true,
   cmd = "Neotree",
-  keys = require("core.keymaps").plugins_keymaps["neotree"],
+  keys = require("core.keymaps").plugins_keymaps.neotree,
   config = config,
 }
 
