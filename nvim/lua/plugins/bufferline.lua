@@ -27,7 +27,7 @@ return {
       "nvim-tree/nvim-web-devicons",
       {
         "moll/vim-bbye",
-        keys = require("core.keymaps").plugins_keymaps["bbye"],
+        keys = require("core.keymaps").plugins_keymaps.bbye,
       },
     },
     event = "BufEnter",

@@ -81,15 +81,15 @@ omap il :normal vil<CR>
 
 M = {}
 M.plugins_keymaps = {
-  ["bbye"] = {
+  bbye = {
     { "<s-q>", "<cmd>Bdelete!<cr>", desc = "Close current buffer", mode = {"n"}, noremap = true, silent = true },
   },
-  ["neotree"] = {
+  neotree = {
     { "<leader>fe", "<cmd>Neotree toggle<cr>", desc = "NeoTree", mode = {"n"} },
   },
-  ["telescope"] = {
+  telescope = {
     { "<leader>tll", "<cmd>Telescope<cr>", desc = "Open Telescope" },
-    { "<leader>tlf", "<cmd>Telescope find_files<cr>", desc = "Telescope: Find Files" },
+    { "<leader>tff", "<cmd>Telescope find_files<cr>", desc = "Telescope: Find Files" },
     { "<leader>tlg", "<cmd>Telescope live_grep<cr>", desc = "Telescope: Live Grep" },
     { "<leader>tgs", "<cmd>Telescope grep_string<cr>", desc = "Telescope: Grep String" },
     {
