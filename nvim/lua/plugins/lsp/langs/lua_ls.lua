@@ -18,7 +18,7 @@ M.options = {
 }
 
 M.on_attach = function(client, _)
-  print("on_attach " .. client.name)
+  -- print("on_attach " .. client.name)
 end
 
 return M
