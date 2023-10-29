@@ -66,14 +66,12 @@ return {
       },
       { "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
-        enabled = false,
+        enabled = true,
         config = function()
           require("telescope").load_extension("fzf")
         end,
       },
-      { "nvim-lua/plenary.nvim",
-        lazy = true,
-      },
+      { "nvim-lua/plenary.nvim" },
     },
     config = config,
   },
