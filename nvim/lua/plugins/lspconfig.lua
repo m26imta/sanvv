@@ -68,14 +68,20 @@ return{
   {
     "neovim/nvim-lspconfig",
     branch = "master",
+    event = { "BufReadPost", "BufNewFile", "BufEnter" },
+    config = config,
     dependencies = {
       { 'williamboman/mason.nvim',
         cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
       },
       { 'williamboman/mason-lspconfig.nvim' },
+      { "j-hui/fidget.nvim",
+        tag = "legacy",
+        config = function()
+          require("fidget").setup()
+        end,
+      },
     },
-    event = { "BufReadPost", "BufNewFile", "BufEnter" },
-    config = config,
   },
 }
 

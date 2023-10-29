@@ -11,8 +11,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 
-keymap("i", "jk", "<ESC>", opts)
 vim.cmd("nnoremap ; :")
+keymap("i", "jk", "<ESC>", opts)
 
 -- move around text
 keymap({"i", "c", "t"}, "<C-h>", "<LEFT>", { noremap = true })
@@ -39,12 +39,6 @@ keymap("n", "<C-s>", ":w<CR>", opts)
 keymap("n", "<C-q><C-x>", "<cmd>q!<CR>", opts)
 --keymap("n", "<leader>e", "<cmd>e ./<CR>", opts)
 keymap("n", "<leader>x", "<cmd>bd!<CR>", opts)
-vim.cmd([[
-if has("unix")
-  cnoremap w!! execute 'silent! write !SUDO_ASKPASS=`which ssh-askpass` sudo tee % >/dev/null' <bar> edit!
-endif
-]])
-
 
 -- -----
 keymap("n", "x", '"_x', opts)  -- do not yank with x
@@ -59,8 +53,15 @@ keymap("n", "<", "v<<ESC>")
 keymap("n", ">", "v><ESC>")
 keymap("n", "<ESC>", ":nohl<CR>", opts)
 -- move lines
-keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
-keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
+-- keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
+-- keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true, desc = "Move down" })
+vim.cmd([[
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+]])
 -- search text with C-f
 keymap("v", "<c-f>", 'y<ESC>/<c-r>"<CR>', opts)
 -- Vim search and replace selected text
@@ -87,6 +88,10 @@ M.plugins_keymaps = {
   neotree = {
     { "<leader>fe", "<cmd>Neotree toggle<cr>", desc = "NeoTree", mode = {"n"} },
   },
+  nvimtree = {
+      { "<leader>ee", "<cmd>NvimTreeToggle<cr>", silent = true },
+      { "<leader>ef", "<cmd>NvimTreeFindFileToggle<cr>", silent = true },
+  },
   telescope = {
     { "<leader>tll", "<cmd>Telescope<cr>", desc = "Open Telescope" },
     { "<leader>tff", "<cmd>Telescope find_files<cr>", desc = "Telescope: Find Files" },
@@ -99,7 +104,7 @@ M.plugins_keymaps = {
     },
   },
   lazygit = {
-    { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Open LazyGit", mode = {"n"}, noremap = true, silent = true },
+    { "<leader>lgg", "<cmd>LazyGit<cr>", desc = "Open LazyGit", mode = {"n"}, noremap = true, silent = true },
   },
 }
 
@@ -120,9 +125,9 @@ M.lsp_set_keymaps = function(_, bufnr)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', '<c-space><c-k>', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', '<c-space><c-k>', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+  -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
