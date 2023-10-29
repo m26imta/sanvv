@@ -88,6 +88,10 @@ M.plugins_keymaps = {
   neotree = {
     { "<leader>fe", "<cmd>Neotree toggle<cr>", desc = "NeoTree", mode = {"n"} },
   },
+  nvimtree = {
+      { "<leader>ee", "<cmd>NvimTreeToggle<cr>", silent = true },
+      { "<leader>ef", "<cmd>NvimTreeFindFileToggle<cr>", silent = true },
+  },
   telescope = {
     { "<leader>tll", "<cmd>Telescope<cr>", desc = "Open Telescope" },
     { "<leader>tff", "<cmd>Telescope find_files<cr>", desc = "Telescope: Find Files" },
