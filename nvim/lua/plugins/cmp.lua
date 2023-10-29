@@ -196,7 +196,7 @@ return {
       -- lsp_kind
       {'onsails/lspkind.nvim'},
     },
-    event = { "BufEnter", "InsertEnter", "CmdlineEnter" },
+    event = { "InsertEnter", "CmdlineEnter" },
     config = config,
   },
 }
