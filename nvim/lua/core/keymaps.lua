@@ -104,7 +104,7 @@ M.plugins_keymaps = {
     },
   },
   lazygit = {
-    { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Open LazyGit", mode = {"n"}, noremap = true, silent = true },
+    { "<leader>lgg", "<cmd>LazyGit<cr>", desc = "Open LazyGit", mode = {"n"}, noremap = true, silent = true },
   },
 }
 
