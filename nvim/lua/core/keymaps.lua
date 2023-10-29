@@ -39,16 +39,6 @@ keymap("n", "<C-s>", ":w<CR>", opts)
 keymap("n", "<C-q><C-x>", "<cmd>q!<CR>", opts)
 --keymap("n", "<leader>e", "<cmd>e ./<CR>", opts)
 keymap("n", "<leader>x", "<cmd>bd!<CR>", opts)
-vim.cmd([[
-if has("unix")
-  echo "set write as sudo keymaps"
-  cnoremap w!! execute 'silent! write !SUDO_ASKPASS=`which ssh-askpass` sudo tee % >/dev/null' <bar> edit!
-  command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-  command! WW execute 'w !sudo -S (inputsecret("sudo passwd: ")) tee > /dev/null %' <bar> edit!
-
-endif
-]])
-
 
 -- -----
 keymap("n", "x", '"_x', opts)  -- do not yank with x
