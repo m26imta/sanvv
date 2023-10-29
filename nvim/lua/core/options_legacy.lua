@@ -1,5 +1,13 @@
 vim.cmd([[
-"color murphy
+if !has('nvim')
+    " Change Your Vim Cursor from a Block to Line in Insert Mode
+    let &t_SI = "\e[6 q"
+    let &t_EI = "\e[2 q"
+endif
+if has('win32')
+    set ff=dos
+endif
+
 color habamax
 set number relativenumber cursorline
 set ts=4 sw=4 sts=4 autoindent smartindent expandtab smarttab
@@ -15,6 +23,7 @@ inoremap jk <ESC>
 nmap J <Nop>
 nmap K <Nop>
 nnoremap <silent> <C-s> :w<CR>
+nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <C-q><C-x> :q!<CR>
 nnoremap <silent> <leader>fe :e .<CR>
 
@@ -48,7 +57,6 @@ nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-
 " yank & paste
 noremap! <C-r><C-r> <C-r>"
 nnoremap g<C-a> ggVG
@@ -57,6 +65,7 @@ nnoremap x "_x
 
 " Status line
 set showmode
+set laststatus=2
 set statusline=\ %{&paste==1?'[PASTE\ MODE]\ \ ':''}\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
 ]])
+
