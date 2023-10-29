@@ -44,7 +44,7 @@ keymap("n", "<leader>x", "<cmd>bd!<CR>", opts)
 keymap("n", "x", '"_x', opts)  -- do not yank with x
 keymap("v", "p", '"_dP', opts) -- better paste
 keymap({"c", "t", "i"}, "<c-r><c-r>", '<c-r>"', { noremap = true })
-keymap("n", "<C-a>", "ggVG", opts)
+keymap("n", "g<C-a>", "ggVG", opts)
 keymap("n", "-", "<C-x>", opts)
 keymap("n", "=", "<C-a>", opts)
 keymap("v", "<", "<gv", opts)
