@@ -3,7 +3,7 @@ vim.cmd([[
 "let &t_SI = "\e[6 q"
 "let &t_EI = "\e[2 q"
 
-color murphy
+"color murphy
 set number relativenumber ignorecase mouse=a
 set clipboard="unnamedplus"
 
