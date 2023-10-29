@@ -3,6 +3,9 @@ if !has('nvim')
     " Change Your Vim Cursor from a Block to Line in Insert Mode
     let &t_SI = "\e[6 q"
     let &t_EI = "\e[2 q"
+    " write as sudo
+    "cmap w!! w !sudo tee > /dev/null %
+    command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 endif
 if has('win32')
     set ff=dos
