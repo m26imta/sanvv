@@ -117,7 +117,7 @@ M.lsp_set_keymaps = function(_, bufnr)
   vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
   -- Enable completion triggered by <c-x><c-o>
-    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+  vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
   -- Buffer local mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -142,6 +142,7 @@ M.lsp_set_keymaps = function(_, bufnr)
   vim.keymap.set('n', '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts)
+
 end
 
 M.saga_set_keymaps = function(_, bufnr)
