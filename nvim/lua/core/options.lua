@@ -50,6 +50,10 @@ vim.opt.iskeyword:append("-")
 vim.opt.backspace = { 'indent', 'eol', 'start' }
 vim.opt.shortmess:append("c")
 --vim.opt.formatoptions:remove({ "c", "r", "o" })
+vim.opt.undofile         = false    -- no undo file
+vim.opt.hidden           = true     -- do not unload buffer when abandoned
+vim.opt.writebackup      = false    -- do not backup file before write
+vim.opt.swapfile         = false    -- no swap file
 vim.opt.list = false
 vim.opt.listchars = {
   tab = '→ ',
