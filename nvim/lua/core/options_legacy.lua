@@ -1,3 +1,4 @@
+vim.cmd([[
 if !has('nvim')
     " Change Your Vim Cursor from a Block to Line in Insert Mode
     let &t_SI = "\e[6 q"
@@ -77,5 +78,5 @@ nnoremap x "_x
 set showmode
 set laststatus=2
 set statusline=\ %{&paste==1?'[PASTE\ MODE]\ \ ':''}\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
+]])
 
