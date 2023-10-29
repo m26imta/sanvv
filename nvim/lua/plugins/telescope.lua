@@ -51,23 +51,27 @@ return {
     cmd = "Telescope",
     keys = require("core.keymaps").plugins_keymaps.telescope,
     dependencies = {
-      {
-        "nvim-telescope/telescope-ui-select.nvim",
+      { "nvim-telescope/telescope-ui-select.nvim",
         enabled = false,
         config = function()
           require("telescope").load_extension("ui-select")
+          require("telescope").setup({
+            extensions = {
+              ["ui-select"] = {
+                require("telescope.themes").get_dropdown{}
+              }
+            }
+          })
         end,
       },
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
         enabled = false,
         config = function()
           require("telescope").load_extension("fzf")
         end,
       },
-      {
-        "nvim-lua/plenary.nvim",
+      { "nvim-lua/plenary.nvim",
         lazy = true,
       },
     },

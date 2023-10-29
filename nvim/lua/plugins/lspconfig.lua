@@ -81,8 +81,17 @@ return{
           require("fidget").setup()
         end,
       },
+      { "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        event = "VeryLazy",
+        config = function()
+          require("lsp_lines").register_lsp_virtual_lines()
+          -- Disable virtual_text since it's redundant due to lsp_lines.
+          vim.diagnostic.config({virtual_text = false })
+        end,
+      },
       { "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
         event = "VeryLazy",
+        enabled = false,
         config = function()
           require("toggle_lsp_diagnostics").init()
           vim.cmd([[
