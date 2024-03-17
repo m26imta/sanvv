@@ -17,6 +17,7 @@ local themes = {
   { "lunarvim/darkplus.nvim",         name = "darkplus",         varients = { "darkplus" } },
   { "bluz71/vim-nightfly-guicolors",  name = "nightfly",         varients = { "nightfly" } },
   { "sainnhe/everforest",             name = "everforest",       varients = { "everforest" } },
+  { "bluz71/vim-moonfly-colors",      name = "moonfly",          varients = { "moonfly" } },
   { "morhetz/gruvbox",                name = "gruvbox",          varients = { "gruvbox" } },
   { "sainnhe/gruvbox-material",       name = "gruvbox-material", varients = { "gruvbox-material" } },
   { "Mofiqul/dracula.nvim",           name = "dracula",          varients = { "dracula", "dracula-soft" } },
