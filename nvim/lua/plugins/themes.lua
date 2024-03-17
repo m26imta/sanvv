@@ -1,5 +1,6 @@
 local theme = "nightfox/carbonfox"
--- "nightfox/carbonfox"  OR  "nightfox"
+-- "name / varient" OR just "name"
+-- "nightfox/carbonfox"  OR just "nightfox"
 
 local preinstall = true    -- true: install all themes / false: install only 1 theme
 local islazy = true  -- themes is lazy, so use :Lazy load foo.nvim to invoke and then use :color ... to set colorscheme
@@ -31,11 +32,13 @@ for m in theme.gmatch(theme, "[^/]+") do
 end
 local theme_name = t[1]
 local theme_varient = t[2]
+local color_cmd = theme_varient == nil and theme_name or theme_varient
 
 local function set_theme()
   for _, v in pairs(builtin_themes) do
     if v == theme_name then
       vim.cmd("color " .. theme_name)
+      color_cmd = theme_name
       return {}
     end
   end
@@ -48,6 +51,7 @@ local function set_theme()
     if v.name == theme_name then
       v.init = function()
         vim.cmd("color " .. color_scheme)
+        color_cmd = color_scheme
       end
       v.lazy = false    -- make sure we load this during startup if it is your main varients
       v.priority = 1000 -- make sure to load this before all the other plugins start
@@ -59,6 +63,15 @@ local function set_theme()
       break
     end
   end
+
+  -- Configure LazyVim to load colorscheme
+  table.insert(M, {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = color_cmd,
+    },
+  })
+
   return M
 end
 
