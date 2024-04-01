@@ -1,3 +1,4 @@
+-- stylua: ignore start
 local theme = "nightfox/carbonfox"
 -- "name / varient" OR just "name"
 -- "nightfox/carbonfox"  OR just "nightfox"
@@ -8,6 +9,7 @@ local islazy = true  -- themes is lazy, so use :Lazy load foo.nvim to invoke and
 local default_theme_opts = {
   lazy = islazy,
 }
+
 local builtin_themes = {"blue", "darkblue", "default", "delek", "desert", "elflord",
   "evening", "habamax", "industry", "koehler", "lunaperche", "morning", "murphy",
   "pablo", "peachpuff", "quiet", "ron", "shine", "slate", "torte", "zellner"}
@@ -77,4 +79,5 @@ local function set_theme()
 end
 
 return set_theme()
+-- stylua: ignore start
 
