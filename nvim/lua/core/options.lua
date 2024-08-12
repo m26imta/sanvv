@@ -19,7 +19,7 @@ vim.opt.showmatch = true
 -- encoding
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
-vim.opt.termencoding = "utf-8"
+-- vim.opt.termencoding = "utf-8"
 
 -- Appearance
 vim.opt.number = true
